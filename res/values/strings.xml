@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">文法</string>
-    <string name="dummy_button">确认</string>
-    <string name="dummy_content">能力考文法</string>
+    <string name="app_name">文  法</string>
 </resources>
