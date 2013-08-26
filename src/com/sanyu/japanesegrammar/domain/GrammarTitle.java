@@ -2,16 +2,16 @@ package com.sanyu.japanesegrammar.domain;
 
 public class GrammarTitle {
 
-	private String grammarSeq;
+	private String gramSeq;
 
 	private String title;
 
-	public String getGrammarSeq() {
-		return grammarSeq;
+	public String getGramSeq() {
+		return gramSeq;
 	}
 
-	public void setGrammarSeq(String grammarSeq) {
-		this.grammarSeq = grammarSeq;
+	public void setGramSeq(String gramSeq) {
+		this.gramSeq = gramSeq;
 	}
 
 	public String getTitle() {

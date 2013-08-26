@@ -13,11 +13,11 @@ public class GrammarDaoImpl implements GrammarDao {
 
 	public ArrayList<GrammarTitle> getTotalGrammar(SQLiteDatabase db) {
 		ArrayList<GrammarTitle> gTitles = new ArrayList<GrammarTitle>();
-		Cursor cursor = db.rawQuery(SqlConstants.fetchGrammarTitle, null);
+		Cursor cursor = db.rawQuery(SqlConstants.getN2GramTitle, null);
 		while (cursor.moveToNext()) {
 			GrammarTitle temp = new GrammarTitle();
-			temp.setGrammarSeq(cursor.getString(cursor.getColumnIndex("GRAMMAR_SEQ")));
-			temp.setTitle(cursor.getString(cursor.getColumnIndex("GRAMMAR_TITLE")));
+			temp.setGramSeq(cursor.getString(cursor.getColumnIndex("GRAM_SEQ")));
+			temp.setTitle(cursor.getString(cursor.getColumnIndex("TITLE")));
 			gTitles.add(temp);
 		}
 		cursor.close();
@@ -32,24 +32,12 @@ public class GrammarDaoImpl implements GrammarDao {
 
 	@Override
 	public GrammarDetail getGrammarDetail(SQLiteDatabase db, GrammarTitle grammarTitle) {
-		Cursor cursor = db.rawQuery(SqlConstants.fetchGrammarDetail, new String[] { grammarTitle.getGrammarSeq() });
+		Cursor cursor = db.rawQuery(SqlConstants.getGramDetail, new String[] { grammarTitle.getGramSeq() });
 		cursor.moveToNext();
 		GrammarDetail grammarDetail = new GrammarDetail();
-		grammarDetail.setGrammarSeq(cursor.getString(cursor.getColumnIndex("GRAMMAR_SEQ")));
-		grammarDetail.setTitle(cursor.getString(cursor.getColumnIndex("GRAMMAR_TITLE")));
-		grammarDetail.setConjunctionMethod(cursor.getString(cursor.getColumnIndex("CONJUNCTION")));
-		ArrayList<String> usage = new ArrayList<String>();
-		usage.add(cursor.getString(cursor.getColumnIndex("USAGE1")));
-		ArrayList<String> translation = new ArrayList<String>();
-		translation.add(cursor.getString(cursor.getColumnIndex("TRANSLATION1")));
-		ArrayList<String> example = new ArrayList<String>();
-		example.add(cursor.getString(cursor.getColumnIndex("EXAMPLE1")));
-		ArrayList<String> exTranslation = new ArrayList<String>();
-		exTranslation.add(cursor.getString(cursor.getColumnIndex("EX_TRANS1")));
-		grammarDetail.setUsage(usage);
-		grammarDetail.setTranslation(translation);
-		grammarDetail.setExample(example);
-		grammarDetail.setExTranslation(exTranslation);
+		grammarDetail.setGramSeq(cursor.getString(cursor.getColumnIndex("GRAM_SEQ")));
+		grammarDetail.setTitle(cursor.getString(cursor.getColumnIndex("TITLE")));
+		grammarDetail.setText(cursor.getString(cursor.getColumnIndex("TEXT")));
 		return grammarDetail;
 	}
 
@@ -67,7 +55,7 @@ public class GrammarDaoImpl implements GrammarDao {
 
 	@Override
 	public Integer getTotalGrammarNo(SQLiteDatabase db) {
-		Cursor cursor = db.rawQuery(SqlConstants.fetchGrammarNo, null);
+		Cursor cursor = db.rawQuery(SqlConstants.getN2GramNo, null);
 		cursor.moveToNext();
 		Integer no = cursor.getInt(cursor.getColumnIndex("count"));
 		cursor.close();
@@ -76,7 +64,7 @@ public class GrammarDaoImpl implements GrammarDao {
 
 	@Override
 	public Integer getTotalFavoritesNo(SQLiteDatabase db) {
-		Cursor cursor = db.rawQuery(SqlConstants.fetchGrammarFavoritesNo, null);
+		Cursor cursor = db.rawQuery(SqlConstants.getFavGramNo, null);
 		cursor.moveToNext();
 		Integer no = cursor.getInt(cursor.getColumnIndex("count"));
 		cursor.close();
