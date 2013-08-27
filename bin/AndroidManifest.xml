@@ -1,33 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sanyu.japanesegrammar"
+    package="com.sanyu.jpgrammar"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="14"
-        android:targetSdkVersion="18" />
+        android:minSdkVersion="11"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.Light.NoTitleBar" >
-        <activity android:name="com.sanyu.japanesegrammar.activity.SliderMenu" >
+        android:theme="@style/AppTheme" >
+        <activity android:name="com.sanyu.jpgrammar.ui.WelcomeActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.sanyu.japanesegrammar.activity.GrammarList"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/app_name" >
+        <activity android:name="com.sanyu.jpgrammar.ui.MainActivity" >
         </activity>
-        <activity
-            android:name="com.sanyu.japanesegrammar.activity.GrammarDetailPage"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/app_name" >
+        <activity android:name="com.sanyu.jpgrammar.ui.ExamActivity" >
+        </activity>
+        <activity android:name="com.sanyu.jpgrammar.ui.SettingsActivity" >
+        </activity>
+        <activity android:name="com.sanyu.jpgrammar.ui.FavorActivity" >
+        </activity>
+        <activity android:name="com.sanyu.jpgrammar.ui.GrmDetailActivity" >
+        </activity>
+        <activity android:name="com.sanyu.jpgrammar.ui.GrmListActivity" >
         </activity>
     </application>
 
