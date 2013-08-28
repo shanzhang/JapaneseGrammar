@@ -17,8 +17,9 @@ import android.widget.SimpleAdapter;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import com.sanyu.jpgrammar.R;
-import com.sanyu.jpgrammar.ui.BaseFragment;
+import com.sanyu.jpgrammar.ui.ExamActivity;
 import com.sanyu.jpgrammar.ui.GrmListActivity;
+import com.sanyu.jpgrammar.util.StatusClass;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
@@ -29,8 +30,6 @@ public class HomeFragment extends BaseFragment implements OnItemClickListener {
 
 	private ListView listView;
 
-	// private MainMenuLvAdapter adapter;
-
 	public HomeFragment(Context context) {
 		super(context);
 	}
@@ -40,36 +39,42 @@ public class HomeFragment extends BaseFragment implements OnItemClickListener {
 		View view = inflater.inflate(R.layout.fragment_home, null);
 		setTitle(view, "日语文法控");
 		refresh = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_list);
-		refresh.setShowIndicator(false);
 		refresh.setMode(Mode.BOTH);
 		listView = refresh.getRefreshableView();
 
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>(4);
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("menu_icon", R.drawable.n1);
-		map.put("menu", "JLPT N1文法");
 		Map<String, Object> map1 = new HashMap<String, Object>();
-		map1.put("menu_icon", R.drawable.n2);
-		map1.put("menu", "JLPT N1考核");
+		map1.put("menu_icon", R.drawable.n1);
+		map1.put("menu", "JLPT N1文法");
 		Map<String, Object> map2 = new HashMap<String, Object>();
-		map2.put("menu_icon", R.drawable.n1);
-		map2.put("menu", "JLPT N2文法");
+		map2.put("menu_icon", R.drawable.n2);
+		map2.put("menu", "JLPT N1考核");
 		Map<String, Object> map3 = new HashMap<String, Object>();
-		map3.put("menu_icon", R.drawable.n2);
-		map3.put("menu", "JLPT N2考核");
-		list.add(map);
+		map3.put("menu_icon", R.drawable.n1);
+		map3.put("menu", "JLPT N2文法");
+		Map<String, Object> map4 = new HashMap<String, Object>();
+		map4.put("menu_icon", R.drawable.n2);
+		map4.put("menu", "JLPT N2考核");
 		list.add(map1);
 		list.add(map2);
 		list.add(map3);
+		list.add(map4);
+		for (int i = 0; i < 6; i++) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			if (i % 2 == 0) {
+				map.put("menu_icon", R.drawable.n1);
+			} else {
+				map.put("menu_icon", R.drawable.n2);
+			}
+			map.put("menu", "预留位置爱你");
+			list.add(map);
+		}
 
-		listView.setAdapter(new SimpleAdapter(getActivity(), list, R.layout.main_menu_item,
-				new String[] {"menu_icon" ,"menu" }, new int[] {R.id.menu_icon, R.id.menu_name }));
+		listView.setAdapter(new SimpleAdapter(getActivity(), list, R.layout.fragment_menu_item, new String[] {
+				"menu_icon", "menu" }, new int[] { R.id.menu_icon, R.id.menu_name }));
 
 		listView.setDivider(null);
-		// adapter = new MainMenuLvAdapter(getActivity());
-		// listView.setAdapter(adapter);
 		listView.setOnItemClickListener(this);
-		refresh.setRefreshing(false);
 		return view;
 	}
 
@@ -77,13 +82,26 @@ public class HomeFragment extends BaseFragment implements OnItemClickListener {
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		switch (position) {
 		case 1:
-			Intent i = new Intent(getActivity(), GrmListActivity.class);
-			startActivity(i);
+			StatusClass.getStatusClass().setLevel("1");
+			Intent i0 = new Intent(this.getActivity(), GrmListActivity.class);
+			startActivity(i0);
 			break;
-
-		default:
-			Intent i1 = new Intent(getActivity(), GrmListActivity.class);
+		case 2:
+			StatusClass.getStatusClass().setLevel("1");
+			Intent i1 = new Intent(this.getActivity(), ExamActivity.class);
 			startActivity(i1);
+			break;
+		case 3:
+			StatusClass.getStatusClass().setLevel("2");
+			Intent i2 = new Intent(getActivity(), GrmListActivity.class);
+			startActivity(i2);
+			break;
+		case 4:
+			StatusClass.getStatusClass().setLevel("2");
+			Intent i3 = new Intent(getActivity(), ExamActivity.class);
+			startActivity(i3);
+			break;
+		default:
 			break;
 		}
 	}

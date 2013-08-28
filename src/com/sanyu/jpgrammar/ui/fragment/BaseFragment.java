@@ -1,4 +1,4 @@
-package com.sanyu.jpgrammar.ui;
+package com.sanyu.jpgrammar.ui.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

@@ -6,13 +6,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import android.content.res.AssetManager;
-import android.database.Cursor;
+//import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 
 import com.sanyu.jpgrammar.service.DbInitService;
-import com.sanyu.jpgrammar.util.SqlConstants;
+//import com.sanyu.jpgrammar.util.SqlConstants;
 
 public class DbInitServiceImpl implements DbInitService {
 
@@ -37,16 +37,13 @@ public class DbInitServiceImpl implements DbInitService {
 		} catch (SQLException e) {
 		} catch (IOException e) {
 		}
-		if (!checkHasData(db)) {
-			db.execSQL(SqlConstants.insertN2Gram);
-		}
 	}
 
-	private boolean checkHasData(SQLiteDatabase db) {
-		Cursor cursor = db.rawQuery(SqlConstants.getN2GramNo, null);
-		cursor.moveToNext();
-		int no = cursor.getInt(cursor.getColumnIndex("count"));
-		return no > 0 ? true : false;
-	}
+//	private boolean checkHasData(SQLiteDatabase db) {
+//		Cursor cursor = db.rawQuery(SqlConstants.getN2GramNo, null);
+//		cursor.moveToNext();
+//		int no = cursor.getInt(cursor.getColumnIndex("count"));
+//		return no > 0 ? true : false;
+//	}
 
 }

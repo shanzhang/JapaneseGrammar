@@ -15,22 +15,22 @@
         <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_above="@+id/button1" >
+            android:layout_above="@+id/sumbit_answer" >
 
             <EditText
-                android:id="@+id/edit"
+                android:id="@+id/answer"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:background="#fff" />
         </ScrollView>
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/sumbit_answer"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:onClick="send"
-            android:text="Send" />
+            android:onClick="sumbit"
+            android:text="提      交" />
     </RelativeLayout>
 
 </LinearLayout>

@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="11"
-        android:targetSdkVersion="17" />
+        android:targetSdkVersion="18" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -25,15 +25,19 @@
         </activity>
         <activity android:name="com.sanyu.jpgrammar.ui.MainActivity" >
         </activity>
+        <activity android:name="com.sanyu.jpgrammar.ui.GrmListActivity" >
+        </activity>
+        <activity android:name="com.sanyu.jpgrammar.ui.GrmDetailActivity" >
+        </activity>
         <activity android:name="com.sanyu.jpgrammar.ui.ExamActivity" >
         </activity>
         <activity android:name="com.sanyu.jpgrammar.ui.SettingsActivity" >
         </activity>
         <activity android:name="com.sanyu.jpgrammar.ui.FavorActivity" >
         </activity>
-        <activity android:name="com.sanyu.jpgrammar.ui.GrmDetailActivity" >
+        <activity android:name="com.sanyu.jpgrammar.ui.SearchGrmActivity" >
         </activity>
-        <activity android:name="com.sanyu.jpgrammar.ui.GrmListActivity" >
+        <activity android:name="com.sanyu.jpgrammar.ui.RecommendActivity" >
         </activity>
     </application>
 

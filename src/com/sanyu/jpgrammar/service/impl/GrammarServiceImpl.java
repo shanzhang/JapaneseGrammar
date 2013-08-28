@@ -13,7 +13,7 @@ import com.sanyu.jpgrammar.service.GrammarService;
 public class GrammarServiceImpl implements GrammarService {
 
 	private GrammarDao grammarDao;
-
+	
 	public GrammarServiceImpl() {
 		grammarDao = new GrammarDaoImpl();
 	}
@@ -45,13 +45,11 @@ public class GrammarServiceImpl implements GrammarService {
 
 	@Override
 	public Integer getTotalGrammarNo(SQLiteDatabase db) {
-		// TODO Auto-generated method stub
 		return grammarDao.getTotalGrammarNo(db);
 	}
 
 	@Override
 	public Integer getTotalFavoritesNo(SQLiteDatabase db) {
-		// TODO Auto-generated method stub
 		return grammarDao.getTotalFavoritesNo(db);
 	}
 

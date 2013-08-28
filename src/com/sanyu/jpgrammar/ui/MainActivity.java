@@ -3,6 +3,7 @@ package com.sanyu.jpgrammar.ui;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.sanyu.jpgrammar.R;
@@ -14,9 +15,9 @@ import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 
 public class MainActivity extends SlidingFragmentActivity {
 
-	private Fragment mContent;
+	public Fragment mContent;
 	
-	private Fragment home;
+	public Fragment home;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,16 @@ public class MainActivity extends SlidingFragmentActivity {
 		getSupportFragmentManager().beginTransaction().replace(R.id.frame_menu_right, new SlidingRightFragment())
 				.commit();
 		
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			if(mContent == home)
+				android.os.Process.killProcess(android.os.Process.myPid());
+			return true;
+		} else
+			return super.onKeyDown(keyCode, event);
 	}
 
 	public void tabclick(View v) {

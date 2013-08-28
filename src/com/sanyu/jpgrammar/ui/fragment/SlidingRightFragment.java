@@ -10,12 +10,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 
 public class SlidingRightFragment extends Fragment implements OnClickListener {
+	
+	private Button settings;
+	
+	private Button exit;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_menu_right, null);
+		settings = (Button) view.findViewById(R.id.settings);
+		exit = (Button) view.findViewById(R.id.exit);
+		settings.setOnClickListener(this);
+		exit.setOnClickListener(this);
 		return view;
 	}
 
