@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -59,17 +58,6 @@ public class HomeFragment extends BaseFragment implements OnItemClickListener {
 		list.add(map2);
 		list.add(map3);
 		list.add(map4);
-		for (int i = 0; i < 6; i++) {
-			Map<String, Object> map = new HashMap<String, Object>();
-			if (i % 2 == 0) {
-				map.put("menu_icon", R.drawable.n1);
-			} else {
-				map.put("menu_icon", R.drawable.n2);
-			}
-			map.put("menu", "‘§¡ÙŒª÷√∞Æƒ„");
-			list.add(map);
-		}
-
 		listView.setAdapter(new SimpleAdapter(getActivity(), list, R.layout.fragment_menu_item, new String[] {
 				"menu_icon", "menu" }, new int[] { R.id.menu_icon, R.id.menu_name }));
 
@@ -105,4 +93,5 @@ public class HomeFragment extends BaseFragment implements OnItemClickListener {
 			break;
 		}
 	}
+
 }

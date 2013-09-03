@@ -1,10 +1,14 @@
 package com.sanyu.jpgrammar.ui;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.sanyu.jpgrammar.R;
 import com.sanyu.jpgrammar.ui.fragment.HomeFragment;
@@ -16,9 +20,13 @@ import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 public class MainActivity extends SlidingFragmentActivity {
 
 	public Fragment mContent;
-	
+
 	public Fragment home;
-	
+
+	private static Boolean isExit = false;
+
+	private static Boolean hasTask = false;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -45,17 +53,35 @@ public class MainActivity extends SlidingFragmentActivity {
 		sm.setSecondaryShadowDrawable(R.drawable.shadowright);
 		getSupportFragmentManager().beginTransaction().replace(R.id.frame_menu_right, new SlidingRightFragment())
 				.commit();
-		
+
 	}
-	
+
+	Timer tExit = new Timer();
+
+	TimerTask task = new TimerTask() {
+		@Override
+		public void run() {
+			isExit = false;
+			hasTask = true;
+		}
+	};
+
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		System.out.println("TabHost_Index.java onKeyDown");
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			if(mContent == home)
-				android.os.Process.killProcess(android.os.Process.myPid());
-			return true;
-		} else
-			return super.onKeyDown(keyCode, event);
+			if (isExit == false) {
+				isExit = true;
+				Toast.makeText(this, "再按一次后退键退出应用程序", Toast.LENGTH_SHORT).show();
+				if (!hasTask) {
+					tExit.schedule(task, 2000);
+				}
+			} else {
+				MainActivity.this.finish();
+				System.exit(0);
+			}
+		}
+		return false;
 	}
 
 	public void tabclick(View v) {
