@@ -70,22 +70,22 @@ public class HomeFragment extends BaseFragment implements OnItemClickListener {
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		switch (position) {
 		case 1:
-			StatusClass.getStatusClass().setLevel("1");
+			StatusClass.getInstance().setLevel("1");
 			Intent i0 = new Intent(this.getActivity(), GrmListActivity.class);
 			startActivity(i0);
 			break;
 		case 2:
-			StatusClass.getStatusClass().setLevel("1");
+			StatusClass.getInstance().setLevel("1");
 			Intent i1 = new Intent(this.getActivity(), ExamActivity.class);
 			startActivity(i1);
 			break;
 		case 3:
-			StatusClass.getStatusClass().setLevel("2");
+			StatusClass.getInstance().setLevel("2");
 			Intent i2 = new Intent(getActivity(), GrmListActivity.class);
 			startActivity(i2);
 			break;
 		case 4:
-			StatusClass.getStatusClass().setLevel("2");
+			StatusClass.getInstance().setLevel("2");
 			Intent i3 = new Intent(getActivity(), ExamActivity.class);
 			startActivity(i3);
 			break;

@@ -21,8 +21,7 @@ public class DbInitServiceImpl implements DbInitService {
 		if (!checkHasData(db)) {
 			try {
 				InputStream in = assetManager.open("init.sql");
-				BufferedReader bufferedReader = new BufferedReader(
-						new InputStreamReader(in));
+				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
 				String sqlReader = "";
 				String sql = "";
 				while ((sqlReader = bufferedReader.readLine()) != null) {

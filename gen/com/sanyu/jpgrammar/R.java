@@ -1254,39 +1254,40 @@ containing a value of this type.
         public static final int abs__up=0x7f05001c;
         public static final int answer=0x7f050045;
         public static final int both=0x7f050003;
-        public static final int bottombar=0x7f05005e;
+        public static final int bottombar=0x7f050060;
         public static final int bottombar_grm_detail=0x7f050056;
-        public static final int bottombar_grm_list=0x7f050059;
-        public static final int btn_comment=0x7f05005b;
-        public static final int btn_grm_detail=0x7f050057;
-        public static final int btn_grm_list=0x7f05005c;
-        public static final int btn_home=0x7f05005f;
-        public static final int btn_mention=0x7f05005a;
-        public static final int detail_text=0x7f050063;
-        public static final int detail_title=0x7f050062;
+        public static final int bottombar_grm_list=0x7f05005b;
+        public static final int btn_grm_detail=0x7f050059;
+        public static final int btn_grm_list=0x7f05005e;
+        public static final int btn_home=0x7f050063;
+        public static final int detail_text=0x7f050067;
+        public static final int detail_title=0x7f050066;
         public static final int disableHome=0x7f05001a;
         public static final int disabled=0x7f050000;
         public static final int edit_query=0x7f050037;
         public static final int exit=0x7f050054;
         public static final int favorites=0x7f050050;
-        public static final int fl_inner=0x7f050065;
+        public static final int fl_inner=0x7f050069;
         public static final int flip=0x7f050008;
         public static final int frame_grm_detail=0x7f050055;
-        public static final int frame_grm_list=0x7f050058;
-        public static final int frame_home=0x7f05005d;
-        public static final int frame_menu_left=0x7f050060;
-        public static final int frame_menu_right=0x7f050061;
+        public static final int frame_grm_list=0x7f05005a;
+        public static final int frame_home=0x7f05005f;
+        public static final int frame_menu_left=0x7f050064;
+        public static final int frame_menu_right=0x7f050065;
         public static final int fullscreen=0x7f05000f;
         public static final int gridview=0x7f050009;
         public static final int homeAsUp=0x7f050017;
-        public static final int info=0x7f050064;
+        public static final int info=0x7f050068;
         public static final int left=0x7f05000c;
+        public static final int left_fragment=0x7f050061;
         public static final int listMode=0x7f050013;
         public static final int manualOnly=0x7f050004;
         public static final int margin=0x7f05000e;
         public static final int menu_icon=0x7f05004e;
         public static final int menu_name=0x7f05004f;
         public static final int normal=0x7f050012;
+        public static final int page_back=0x7f05005c;
+        public static final int page_forward=0x7f05005d;
         public static final int pullDownFromTop=0x7f050005;
         public static final int pullFromEnd=0x7f050002;
         public static final int pullFromStart=0x7f050001;
@@ -1294,13 +1295,14 @@ containing a value of this type.
         public static final int pull_refresh_grm_detail=0x7f05004b;
         public static final int pull_refresh_grm_list=0x7f05004c;
         public static final int pull_refresh_list=0x7f05004d;
-        public static final int pull_to_refresh_image=0x7f050066;
-        public static final int pull_to_refresh_progress=0x7f050067;
-        public static final int pull_to_refresh_sub_text=0x7f050069;
-        public static final int pull_to_refresh_text=0x7f050068;
+        public static final int pull_to_refresh_image=0x7f05006a;
+        public static final int pull_to_refresh_progress=0x7f05006b;
+        public static final int pull_to_refresh_sub_text=0x7f05006d;
+        public static final int pull_to_refresh_text=0x7f05006c;
         public static final int query=0x7f050047;
         public static final int rcm_app=0x7f050052;
         public static final int right=0x7f05000d;
+        public static final int right_fragment=0x7f050062;
         public static final int rotate=0x7f050007;
         public static final int scrollview=0x7f05000b;
         public static final int search_grammar=0x7f050051;
@@ -1310,7 +1312,7 @@ containing a value of this type.
         public static final int showCustom=0x7f050019;
         public static final int showHome=0x7f050016;
         public static final int showTitle=0x7f050018;
-        public static final int slidingmenumain=0x7f05006a;
+        public static final int slidingmenumain=0x7f05006e;
         public static final int sumbit_answer=0x7f050044;
         public static final int tabMode=0x7f050014;
         public static final int title=0x7f050043;
@@ -1319,6 +1321,8 @@ containing a value of this type.
         public static final int user_name=0x7f05004a;
         public static final int webview=0x7f05000a;
         public static final int welcome=0x7f050048;
+        public static final int word_back=0x7f050057;
+        public static final int word_forward=0x7f050058;
         public static final int wrap_content=0x7f050011;
     }
     public static final class integer {
@@ -1415,7 +1419,9 @@ containing a value of this type.
          */
         public static final int abs__shareactionprovider_share_with_application=0x7f07000e;
         public static final int app_name=0x7f070006;
-        public static final int img_desc=0x7f070014;
+        public static final int left_fragment=0x7f070018;
+        public static final int page_back=0x7f070014;
+        public static final int page_forward=0x7f070015;
         /**  Just use standard Pull Down String when pulling up. These can be set for languages which require it 
  Just use standard Pull Down String when pulling up. These can be set for languages which require it 
          */
@@ -1425,6 +1431,9 @@ containing a value of this type.
         public static final int pull_to_refresh_pull_label=0x7f070000;
         public static final int pull_to_refresh_refreshing_label=0x7f070002;
         public static final int pull_to_refresh_release_label=0x7f070001;
+        public static final int right_fragment=0x7f070019;
+        public static final int word_back=0x7f070016;
+        public static final int word_forward=0x7f070017;
     }
     public static final class style {
         /** 

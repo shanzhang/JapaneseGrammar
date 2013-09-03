@@ -13,19 +13,19 @@ import com.sanyu.jpgrammar.service.GrammarService;
 public class GrammarServiceImpl implements GrammarService {
 
 	private GrammarDao grammarDao;
-	
+
 	public GrammarServiceImpl() {
 		grammarDao = new GrammarDaoImpl();
 	}
 
 	@Override
-	public ArrayList<GrammarTitle> getTotalGrammar(SQLiteDatabase db) {
-		return grammarDao.getTotalGrammar(db);
+	public ArrayList<GrammarTitle> getTotalGrammar(SQLiteDatabase db, String offset) {
+		return grammarDao.getTotalGrammar(db, offset);
 	}
 
 	@Override
-	public ArrayList<GrammarTitle> getTotalFavorites(SQLiteDatabase db) {
-		return grammarDao.getTotalFavorites(db);
+	public ArrayList<GrammarTitle> getTotalFavorites(SQLiteDatabase db, String offset) {
+		return grammarDao.getTotalFavorites(db, offset);
 	}
 
 	@Override

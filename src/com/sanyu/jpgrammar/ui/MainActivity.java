@@ -89,6 +89,10 @@ public class MainActivity extends SlidingFragmentActivity {
 		case R.id.btn_home:
 			switchContent(mContent, home);
 			break;
+		case R.id.left_fragment:
+			break;
+		case R.id.right_fragment:
+			break;
 		}
 	}
 

@@ -11,21 +11,21 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class GrammarDaoImpl implements GrammarDao {
-	
+
 	private Integer nLevel;
-	
-	public GrammarDaoImpl(){
-		nLevel = Integer.parseInt(StatusClass.getStatusClass().getLevel());
+
+	public GrammarDaoImpl() {
+		nLevel = Integer.parseInt(StatusClass.getInstance().getLevel());
 	}
 
-	public ArrayList<GrammarTitle> getTotalGrammar(SQLiteDatabase db) {
+	public ArrayList<GrammarTitle> getTotalGrammar(SQLiteDatabase db, String offset) {
 		ArrayList<GrammarTitle> gTitles = new ArrayList<GrammarTitle>();
 		Cursor cursor = null;
 		if (nLevel.equals(1)) {
-			cursor = db.rawQuery(SqlConstants.getN1GramTitle, null);
+			cursor = db.rawQuery(SqlConstants.getN1GramTitlePrepend + offset + SqlConstants.getN1GramTitleTail, null);
 		}
 		if (nLevel.equals(2)) {
-			cursor = db.rawQuery(SqlConstants.getN2GramTitle, null);
+			cursor = db.rawQuery(SqlConstants.getN2GramTitlePrepend + offset + SqlConstants.getN2GramTitleTail, null);
 		}
 		if (cursor == null) {
 			return null;
@@ -41,7 +41,7 @@ public class GrammarDaoImpl implements GrammarDao {
 	}
 
 	@Override
-	public ArrayList<GrammarTitle> getTotalFavorites(SQLiteDatabase db) {
+	public ArrayList<GrammarTitle> getTotalFavorites(SQLiteDatabase db, String offset) {
 		// TODO Auto-generated method stub
 		return null;
 	}

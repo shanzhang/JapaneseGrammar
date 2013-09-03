@@ -18,18 +18,17 @@
         android:baselineAligned="false" >
 
         <RelativeLayout
-            android:id="@+id/btn_mention"
+            android:id="@+id/page_back"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:onClick="tabclick" >
+            android:onClick="tabClickGrmList" >
 
-            <ImageView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:contentDescription="@string/img_desc"
-                android:src="@drawable/btn_mention_bg" />
+                android:text="@string/page_back" />
         </RelativeLayout>
 
         <LinearLayout
@@ -41,18 +40,17 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:id="@+id/btn_comment"
+            android:id="@+id/page_forward"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:onClick="tabclick" >
+            android:onClick="tabClickGrmList" >
 
-            <ImageView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:contentDescription="@string/img_desc"
-                android:src="@drawable/btn_comment_bg" />
+                android:text="@string/page_forward" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -62,7 +60,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:contentDescription="@string/img_desc"
         android:onClick="tabClickGrmList"
         android:paddingBottom="3.0dip"
         android:src="@drawable/btn_home_bg" />

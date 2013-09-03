@@ -9,9 +9,9 @@ import com.sanyu.jpgrammar.domain.GrammarTitle;
 
 public interface GrammarDao {
 
-	public ArrayList<GrammarTitle> getTotalGrammar(SQLiteDatabase db);
+	public ArrayList<GrammarTitle> getTotalGrammar(SQLiteDatabase db, String offset);
 
-	public ArrayList<GrammarTitle> getTotalFavorites(SQLiteDatabase db);
+	public ArrayList<GrammarTitle> getTotalFavorites(SQLiteDatabase db, String offset);
 
 	public Integer getTotalGrammarNo(SQLiteDatabase db);
 

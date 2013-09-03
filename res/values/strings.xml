@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="img_desc">img_desc</string>
     <string name="app_name">日语文法控</string>
+    <string name="page_back">上一页</string>
+    <string name="page_forward">下一页</string>
+    <string name="word_back">上一个</string>
+    <string name="word_forward">下一个</string>
+    <string name="left_fragment">左边栏</string>
+    <string name="right_fragment">右边栏</string>
 
 </resources>

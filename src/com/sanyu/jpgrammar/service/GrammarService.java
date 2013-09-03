@@ -9,12 +9,12 @@ import com.sanyu.jpgrammar.domain.GrammarTitle;
 
 public interface GrammarService {
 
-	public ArrayList<GrammarTitle> getTotalGrammar(SQLiteDatabase db);
+	public ArrayList<GrammarTitle> getTotalGrammar(SQLiteDatabase db, String offset);
 
-	public ArrayList<GrammarTitle> getTotalFavorites(SQLiteDatabase db);
-	
+	public ArrayList<GrammarTitle> getTotalFavorites(SQLiteDatabase db, String offset);
+
 	public Integer getTotalGrammarNo(SQLiteDatabase db);
-	
+
 	public Integer getTotalFavoritesNo(SQLiteDatabase db);
 
 	public GrammarDetail getGrammarDetail(SQLiteDatabase db, GrammarTitle grammarTitle);

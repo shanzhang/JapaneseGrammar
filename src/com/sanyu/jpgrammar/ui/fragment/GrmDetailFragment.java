@@ -47,6 +47,10 @@ public class GrmDetailFragment extends BaseFragment implements OnItemClickListen
 
 	private int count;
 
+	private MyAdapter myAdapter;
+
+	private List<Map<String, String>> list;
+
 	public GrmDetailFragment(Context context) {
 		super(context);
 	}
@@ -55,7 +59,7 @@ public class GrmDetailFragment extends BaseFragment implements OnItemClickListen
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		count = 0;
 		View view = inflater.inflate(R.layout.fragment_grm_detail, null);
-		nLevel = Integer.parseInt(StatusClass.getStatusClass().getLevel());
+		nLevel = Integer.parseInt(StatusClass.getInstance().getLevel());
 		if (nLevel.equals(1)) {
 			setTitle(view, "N1文法");
 		}
@@ -65,20 +69,23 @@ public class GrmDetailFragment extends BaseFragment implements OnItemClickListen
 		refresh = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_grm_detail);
 		refresh.setMode(Mode.BOTH);
 		listView = refresh.getRefreshableView();
-		grammarSeq = Integer.parseInt(getActivity().getIntent().getStringExtra("GRM_SEQ"));
+
+		grammarSeq = StatusClass.getInstance().getGramSeq();
+
 		grammarTitle = new GrammarTitle();
 		grammarTitle.setGramSeq(grammarSeq.toString());
 		grammarService = new GrammarServiceImpl();
 		db = getActivity().openOrCreateDatabase(SqlConstants.DATABASE_NAME, Context.MODE_PRIVATE, null);
 
-		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+		list = new ArrayList<Map<String, String>>();
 		GrammarDetail grammarDetail = grammarService.getGrammarDetail(db, grammarTitle);
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("detail_title", grammarDetail.getTitle());
 		map.put("detail_text", grammarDetail.getText());
 		list.add(map);
-		listView.setAdapter(new SimpleAdapter(getActivity(), list, R.layout.grm_dtl_item, new String[] {
-				"detail_title", "detail_text" }, new int[] { R.id.detail_title, R.id.detail_text }));
+		myAdapter = new MyAdapter(getActivity(), list, R.layout.grm_dtl_item, new String[] { "detail_title",
+				"detail_text" }, new int[] { R.id.detail_title, R.id.detail_text });
+		listView.setAdapter(myAdapter);
 
 		listView.setOnItemClickListener(this);
 		listView.setDivider(null);
@@ -94,6 +101,29 @@ public class GrmDetailFragment extends BaseFragment implements OnItemClickListen
 		} else if (count == 1) {
 			Toast.makeText(getActivity(), "收藏成功", Toast.LENGTH_SHORT).show();
 			count = 0;
+		}
+
+	}
+
+	public void refresh() {
+		list.clear();
+		grammarSeq = StatusClass.getInstance().getGramSeq();
+		grammarTitle = new GrammarTitle();
+		grammarTitle.setGramSeq(grammarSeq.toString());
+		db = getActivity().openOrCreateDatabase(SqlConstants.DATABASE_NAME, Context.MODE_PRIVATE, null);
+		GrammarDetail grammarDetail = grammarService.getGrammarDetail(db, grammarTitle);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("detail_title", grammarDetail.getTitle());
+		map.put("detail_text", grammarDetail.getText());
+		list.add(map);
+		db.close();
+		myAdapter.notifyDataSetChanged();
+	}
+
+	class MyAdapter extends SimpleAdapter {
+
+		public MyAdapter(Context context, List<? extends Map<String, ?>> data, int resource, String[] from, int[] to) {
+			super(context, data, resource, from, to);
 		}
 
 	}
