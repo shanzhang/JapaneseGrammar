@@ -18,11 +18,17 @@ public class StatusClass {
 
 	private static Integer favPageForN2;
 
+	private static Integer favN1Count;
+
+	private static Integer favN2Count;
+
 	private StatusClass() {
 		pageForN1 = 0;
 		pageForN2 = 0;
 		favPageForN1 = 0;
 		favPageForN2 = 0;
+		favN1Count = 231;
+		favN2Count = 170;
 	}
 
 	public static StatusClass getInstance() {
@@ -154,7 +160,9 @@ public class StatusClass {
 	}
 
 	public void setFavPageForN1(Integer favPageForN1Int) {
-		favPageForN1 = favPageForN1Int;
+		if (favPageForN1Int >= 0 && favPageForN1Int <= favN1Count) {
+			favPageForN1 = favPageForN1Int;
+		}
 	}
 
 	public Integer getFavPageForN2() {
@@ -162,7 +170,25 @@ public class StatusClass {
 	}
 
 	public void setFavPageForN2(Integer favPageForN2Int) {
-		favPageForN2 = favPageForN2Int;
+		if (favPageForN2Int >= 0 && favPageForN2Int <= favN2Count) {
+			favPageForN2 = favPageForN2Int;
+		}
+	}
+
+	public Integer getFavN1Count() {
+		return favN1Count;
+	}
+
+	public void setFavN1Count(Integer favN1CountInt) {
+		favN1Count = favN1CountInt;
+	}
+
+	public Integer getFavN2Count() {
+		return favN2Count;
+	}
+
+	public void setFavN2Count(Integer favN2CountInt) {
+		favN2Count = favN2CountInt;
 	}
 
 	public Integer getGramSeq() {
@@ -190,6 +216,14 @@ public class StatusClass {
 			return getFavPageForN2();
 		}
 		return null;
+	}
+
+	public void setFavCount(Integer index) {
+		if (getLevel().equals("1")) {
+			setFavN1Count(index);
+		} else if (getLevel().equals("2")) {
+			setFavN2Count(index);
+		}
 	}
 
 }

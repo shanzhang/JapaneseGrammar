@@ -64,7 +64,7 @@ public class FavorListFragment extends BaseFragment implements OnItemClickListen
 		listView = refresh.getRefreshableView();
 		grammarService = new GrammarServiceImpl();
 		db = getActivity().openOrCreateDatabase(SqlConstants.DATABASE_NAME, Context.MODE_PRIVATE, null);
-
+		StatusClass.getInstance().setFavCount(grammarService.getTotalFavoritesNo(db));
 		list = new ArrayList<Map<String, String>>(64);
 		favList = grammarService.getTotalFavorites(db, StatusClass.getInstance().getFavPage().toString());
 		for (int i = 0; i < favList.size(); i++) {
@@ -107,7 +107,7 @@ public class FavorListFragment extends BaseFragment implements OnItemClickListen
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		if (favList.size() > 0) {
 			Intent i = new Intent(getActivity(), GrmDetailActivity.class);
-			StatusClass.getInstance().setGramSeq(Integer.parseInt(favList.get(position).getGramSeq()));
+			StatusClass.getInstance().setGramSeq(Integer.parseInt(favList.get(position - 1).getGramSeq()));
 			startActivity(i);
 		}
 	}

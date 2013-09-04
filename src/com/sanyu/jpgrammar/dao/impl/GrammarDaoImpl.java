@@ -1,6 +1,9 @@
 package com.sanyu.jpgrammar.dao.impl;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import com.sanyu.jpgrammar.dao.GrammarDao;
 import com.sanyu.jpgrammar.domain.GrammarDetail;
 import com.sanyu.jpgrammar.domain.GrammarTitle;
@@ -94,19 +97,24 @@ public class GrammarDaoImpl implements GrammarDao {
 
 	@Override
 	public void addFavorites(SQLiteDatabase db, GrammarDetail grammarDetail) {
+		Pattern pattern = Pattern.compile("\r|\n");
+		String col1 = grammarDetail.getGramSeq();
+		String col2 = grammarDetail.getTitle();
+		Matcher m1 = pattern.matcher(col1);
+		Matcher m2 = pattern.matcher(col2);
+		col1 = m1.replaceAll("");
+		col2 = m2.replaceAll("");
 		if (nLevel.equals(1)) {
-			db.execSQL(SqlConstants.addFavorite, new String[] { grammarDetail.getGramSeq(), grammarDetail.getTitle(),
-					"1" });
+			db.execSQL(SqlConstants.addFavorite, new Object[] { col1, col2, 1 });
 		}
 		if (nLevel.equals(2)) {
-			db.execSQL(SqlConstants.addFavorite, new String[] { grammarDetail.getGramSeq(), grammarDetail.getTitle(),
-					"2" });
+			db.execSQL(SqlConstants.addFavorite, new Object[] { col1, col2, 2 });
 		}
 	}
 
 	@Override
 	public void cancelFavorites(SQLiteDatabase db, GrammarDetail grammarDetail) {
-
+		
 	}
 
 	@Override

@@ -91,7 +91,7 @@ public class GrmDetailFragment extends BaseFragment implements OnItemClickListen
 
 		listView.setOnItemClickListener(this);
 		listView.setDivider(null);
-		db.close();
+//		db.close();
 		return view;
 	}
 
@@ -119,7 +119,7 @@ public class GrmDetailFragment extends BaseFragment implements OnItemClickListen
 		map.put("detail_title", grammarDetail.getTitle());
 		map.put("detail_text", grammarDetail.getText());
 		list.add(map);
-		db.close();
+//		db.close();
 		myAdapter.notifyDataSetChanged();
 	}
 

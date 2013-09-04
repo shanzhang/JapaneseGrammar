@@ -38,6 +38,4 @@ public final class SqlConstants {
 
 	public static final String cancelFavorite = "DELETE FROM fav_gram WHERE GRAM_SEQ=? AND N_LVL=?;";
 
-	public static final String fetchFavorite = "";
-
 }
