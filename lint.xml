@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
     <issue id="MissingTranslation" severity="warning" />
+    <issue id="ValidFragment" severity="ignore">
+        <ignore path="src/com/sanyu/jpgrammar/ui/fragment/FavFragment.java" />
+    </issue>
 </lint>

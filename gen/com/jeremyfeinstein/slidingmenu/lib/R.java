@@ -32,10 +32,10 @@ public final class R {
 		public static final int margin = 0x7f05000e;
 		public static final int right = 0x7f05000d;
 		public static final int selected_view = 0x7f050010;
-		public static final int slidingmenumain = 0x7f05006e;
+		public static final int slidingmenumain = 0x7f050075;
 	}
 	public static final class layout {
-		public static final int slidingmenumain = 0x7f03002c;
+		public static final int slidingmenumain = 0x7f03002e;
 	}
 	public static final class string {
 		public static final int app_name = 0x7f070006;

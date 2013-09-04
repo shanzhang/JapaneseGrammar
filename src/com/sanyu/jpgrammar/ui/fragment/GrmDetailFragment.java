@@ -49,6 +49,8 @@ public class GrmDetailFragment extends BaseFragment implements OnItemClickListen
 
 	private MyAdapter myAdapter;
 
+	private GrammarDetail grammarDetail;
+
 	private List<Map<String, String>> list;
 
 	public GrmDetailFragment(Context context) {
@@ -78,7 +80,7 @@ public class GrmDetailFragment extends BaseFragment implements OnItemClickListen
 		db = getActivity().openOrCreateDatabase(SqlConstants.DATABASE_NAME, Context.MODE_PRIVATE, null);
 
 		list = new ArrayList<Map<String, String>>();
-		GrammarDetail grammarDetail = grammarService.getGrammarDetail(db, grammarTitle);
+		grammarDetail = grammarService.getGrammarDetail(db, grammarTitle);
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("detail_title", grammarDetail.getTitle());
 		map.put("detail_text", grammarDetail.getText());
@@ -99,6 +101,7 @@ public class GrmDetailFragment extends BaseFragment implements OnItemClickListen
 			Toast.makeText(getActivity(), "再按一次收藏该文法", Toast.LENGTH_SHORT).show();
 			count = 1;
 		} else if (count == 1) {
+			grammarService.addFavorites(db, grammarDetail);
 			Toast.makeText(getActivity(), "收藏成功", Toast.LENGTH_SHORT).show();
 			count = 0;
 		}

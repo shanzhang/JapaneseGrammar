@@ -9,6 +9,7 @@ import com.sanyu.jpgrammar.util.StatusClass;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 public class GrammarDaoImpl implements GrammarDao {
 
@@ -42,8 +43,32 @@ public class GrammarDaoImpl implements GrammarDao {
 
 	@Override
 	public ArrayList<GrammarTitle> getTotalFavorites(SQLiteDatabase db, String offset) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<GrammarTitle> gTitles = new ArrayList<GrammarTitle>();
+		Cursor cursor = null;
+		if (nLevel.equals(1)) {
+			try {
+				cursor = db.rawQuery(SqlConstants.getN1FavGramTitlePrepend + offset
+						+ SqlConstants.getN1FavGramTitleTail, null);
+			} catch (Exception e) {
+				Log.e("sql", e.toString());
+			}
+
+		}
+		if (nLevel.equals(2)) {
+			cursor = db.rawQuery(SqlConstants.getN2FavGramTitlePrepend + offset + SqlConstants.getN2FavGramTitleTail,
+					null);
+		}
+		if (cursor == null) {
+			return null;
+		}
+		while (cursor.moveToNext()) {
+			GrammarTitle temp = new GrammarTitle();
+			temp.setGramSeq(cursor.getString(cursor.getColumnIndex("GRAM_SEQ")));
+			temp.setTitle(cursor.getString(cursor.getColumnIndex("TITLE")));
+			gTitles.add(temp);
+		}
+		cursor.close();
+		return gTitles;
 	}
 
 	@Override
@@ -63,18 +88,24 @@ public class GrammarDaoImpl implements GrammarDao {
 		grammarDetail.setGramSeq(cursor.getString(cursor.getColumnIndex("GRAM_SEQ")));
 		grammarDetail.setTitle(cursor.getString(cursor.getColumnIndex("TITLE")));
 		grammarDetail.setText(cursor.getString(cursor.getColumnIndex("TEXT")));
+		cursor.close();
 		return grammarDetail;
 	}
 
 	@Override
 	public void addFavorites(SQLiteDatabase db, GrammarDetail grammarDetail) {
-		// TODO Auto-generated method stub
-
+		if (nLevel.equals(1)) {
+			db.execSQL(SqlConstants.addFavorite, new String[] { grammarDetail.getGramSeq(), grammarDetail.getTitle(),
+					"1" });
+		}
+		if (nLevel.equals(2)) {
+			db.execSQL(SqlConstants.addFavorite, new String[] { grammarDetail.getGramSeq(), grammarDetail.getTitle(),
+					"2" });
+		}
 	}
 
 	@Override
 	public void cancelFavorites(SQLiteDatabase db, GrammarDetail grammarDetail) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -98,7 +129,16 @@ public class GrammarDaoImpl implements GrammarDao {
 
 	@Override
 	public Integer getTotalFavoritesNo(SQLiteDatabase db) {
-		Cursor cursor = db.rawQuery(SqlConstants.getFavGramNo, null);
+		Cursor cursor = null;
+		if (nLevel.equals(1)) {
+			cursor = db.rawQuery(SqlConstants.getN1FavGramNo, null);
+		}
+		if (nLevel.equals(2)) {
+			cursor = db.rawQuery(SqlConstants.getN2FavGramNo, null);
+		}
+		if (cursor == null) {
+			return null;
+		}
 		cursor.moveToNext();
 		Integer no = cursor.getInt(cursor.getColumnIndex("count"));
 		cursor.close();
