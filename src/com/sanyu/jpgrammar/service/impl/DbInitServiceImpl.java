@@ -18,7 +18,7 @@ public class DbInitServiceImpl implements DbInitService {
 
 	@Override
 	public void initDatabase(SQLiteDatabase db, AssetManager assetManager) {
-		if (!checkHasData(db)) {
+		if (!checkHasInitialized(db)) {
 			try {
 				InputStream in = assetManager.open("init.sql");
 				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
@@ -39,6 +39,20 @@ public class DbInitServiceImpl implements DbInitService {
 			} catch (IOException e) {
 			}
 		}
+	}
+
+	private boolean checkHasInitialized(SQLiteDatabase db) {
+		Boolean result = false;
+		Cursor cursor = null;
+		String sql = "select count(*) as c from sqlite_master where type ='table' and name ='fav_gram' ";
+		cursor = db.rawQuery(sql, null);
+		if (cursor.moveToNext()) {
+			int count = cursor.getInt(0);
+			if (count > 0) {
+				result = true;
+			}
+		}
+		return result;
 	}
 
 	private boolean checkHasData(SQLiteDatabase db) {
