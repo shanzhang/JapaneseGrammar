@@ -60,7 +60,7 @@ public class GrmListFragment extends BaseFragment implements OnItemClickListener
 			setTitle(view, "N2ÎÄ·¨");
 		}
 		refresh = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_grm_list);
-		refresh.setMode(Mode.BOTH);
+		refresh.setMode(Mode.DISABLED);
 		listView = refresh.getRefreshableView();
 		grammarService = new GrammarServiceImpl();
 		db = getActivity().openOrCreateDatabase(SqlConstants.DATABASE_NAME, Context.MODE_PRIVATE, null);

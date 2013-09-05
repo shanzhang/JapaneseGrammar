@@ -8,36 +8,60 @@
         android:minSdkVersion="11"
         android:targetSdkVersion="18" />
 
-<!--     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
+    <!--
+         <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    -->
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.sanyu.jpgrammar.ui.WelcomeActivity" >
+        <activity
+            android:name="com.sanyu.jpgrammar.ui.WelcomeActivity"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.sanyu.jpgrammar.ui.MainActivity" >
+        <activity
+            android:name="com.sanyu.jpgrammar.ui.HomeActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.sanyu.jpgrammar.ui.GrmListActivity" >
+        <activity
+            android:name="com.sanyu.jpgrammar.ui.GrmListActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.sanyu.jpgrammar.ui.GrmDetailActivity" >
+        <activity
+            android:name="com.sanyu.jpgrammar.ui.GrmDetailActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.sanyu.jpgrammar.ui.ExamActivity" >
+        <activity
+            android:name="com.sanyu.jpgrammar.ui.ExamActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.sanyu.jpgrammar.ui.SettingsActivity" >
+        <activity
+            android:name="com.sanyu.jpgrammar.ui.SettingsActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.sanyu.jpgrammar.ui.FavorActivity" >
+        <activity
+            android:name="com.sanyu.jpgrammar.ui.FavorActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.sanyu.jpgrammar.ui.SearchGrmActivity" >
+        <activity
+            android:name="com.sanyu.jpgrammar.ui.FavorDetailActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.sanyu.jpgrammar.ui.RecommendActivity" >
+        <activity
+            android:name="com.sanyu.jpgrammar.ui.SearchGrmActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.sanyu.jpgrammar.ui.RecommendActivity"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

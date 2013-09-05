@@ -16,7 +16,6 @@ public class GrmListActivity extends BaseActivity {
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-
 		grmList = new GrmListFragment(this);
 
 		setContentView(R.layout.frame_grm_list);

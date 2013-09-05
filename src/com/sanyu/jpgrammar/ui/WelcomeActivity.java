@@ -45,7 +45,7 @@ public class WelcomeActivity extends BaseActivity implements AnimationListener {
 	@Override
 	public void onAnimationEnd(Animation animation) {
 		SharedPreUtil.getSharedPreference(this);
-		Intent intent = new Intent(this, MainActivity.class);
+		Intent intent = new Intent(this, HomeActivity.class);
 		startActivity(intent);
 		finish();
 	}

@@ -7,17 +7,19 @@
 
     <include layout="@layout/actionbar" />
 
-    <com.handmark.pulltorefresh.library.PullToRefreshListView
+    <com.handmark.pulltorefresh.library.PullToRefreshGridView
         android:id="@+id/pull_refresh_list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/timeline_bg_image"
+        android:background="@drawable/wb_item_bg"
         android:cacheColorHint="#00000000"
         android:fadingEdge="none"
         android:fastScrollEnabled="false"
-        android:footerDividersEnabled="false"
-        android:headerDividersEnabled="false"
-        android:smoothScrollbar="true" >
-    </com.handmark.pulltorefresh.library.PullToRefreshListView>
+        android:gravity="center_horizontal"
+        android:numColumns="2"
+        android:smoothScrollbar="true"
+        android:verticalSpacing="10dp" >
+    </com.handmark.pulltorefresh.library.PullToRefreshGridView>
+    <!-- android:background="@drawable/timeline_bg_image" -->
 
 </LinearLayout>

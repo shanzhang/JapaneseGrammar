@@ -12,7 +12,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 
 import com.sanyu.jpgrammar.service.DbInitService;
-import com.sanyu.jpgrammar.util.SqlConstants;
 
 public class DbInitServiceImpl implements DbInitService {
 
@@ -55,16 +54,16 @@ public class DbInitServiceImpl implements DbInitService {
 		return result;
 	}
 
-	private boolean checkHasData(SQLiteDatabase db) {
-		Cursor cursor1 = db.rawQuery(SqlConstants.getN1GramNo, null);
-		cursor1.moveToNext();
-		int no1 = cursor1.getInt(cursor1.getColumnIndex("count"));
-		Cursor cursor2 = db.rawQuery(SqlConstants.getN2GramNo, null);
-		cursor2.moveToNext();
-		int no2 = cursor2.getInt(cursor2.getColumnIndex("count"));
-		cursor1.close();
-		cursor2.close();
-		return (no2 == 170 ? true : false) && (no1 == 231 ? true : false);
-	}
+//	private boolean checkHasData(SQLiteDatabase db) {
+//		Cursor cursor1 = db.rawQuery(SqlConstants.getN1GramNo, null);
+//		cursor1.moveToNext();
+//		int no1 = cursor1.getInt(cursor1.getColumnIndex("count"));
+//		Cursor cursor2 = db.rawQuery(SqlConstants.getN2GramNo, null);
+//		cursor2.moveToNext();
+//		int no2 = cursor2.getInt(cursor2.getColumnIndex("count"));
+//		cursor1.close();
+//		cursor2.close();
+//		return (no2 == 170 ? true : false) && (no1 == 231 ? true : false);
+//	}
 
 }

@@ -10,6 +10,10 @@ public class StatusClass {
 
 	private static Integer gramSeqForN2;
 
+	private static Integer gramFavSeqForN1;
+
+	private static Integer gramFavSeqForN2;
+
 	private static Integer pageForN1;
 
 	private static Integer pageForN2;
@@ -115,79 +119,79 @@ public class StatusClass {
 		level = levelStr;
 	}
 
-	public Integer getGramSeqForN1() {
+	private Integer getGramSeqForN1() {
 		return gramSeqForN1;
 	}
 
-	public void setGramSeqForN1(Integer gramSeqForN1Str) {
+	private void setGramSeqForN1(Integer gramSeqForN1Str) {
 		if (gramSeqForN1Str >= 1 && gramSeqForN1Str <= 231) {
 			gramSeqForN1 = gramSeqForN1Str;
 		}
 	}
 
-	public Integer getGramSeqForN2() {
+	private Integer getGramSeqForN2() {
 		return gramSeqForN2;
 	}
 
-	public void setGramSeqForN2(Integer gramSeqForN2Str) {
+	private void setGramSeqForN2(Integer gramSeqForN2Str) {
 		if (gramSeqForN2Str >= 1 && gramSeqForN2Str <= 170) {
 			gramSeqForN2 = gramSeqForN2Str;
 		}
 	}
 
-	public Integer getPageForN1() {
+	private Integer getPageForN1() {
 		return pageForN1;
 	}
 
-	public void setPageForN1(Integer pageForN1Str) {
+	private void setPageForN1(Integer pageForN1Str) {
 		if (pageForN1Str >= 0 && pageForN1Str <= 231) {
 			pageForN1 = pageForN1Str;
 		}
 	}
 
-	public Integer getPageForN2() {
+	private Integer getPageForN2() {
 		return pageForN2;
 	}
 
-	public void setPageForN2(Integer pageForN2Str) {
+	private void setPageForN2(Integer pageForN2Str) {
 		if (pageForN2Str >= 0 && pageForN2Str <= 170) {
 			pageForN2 = pageForN2Str;
 		}
 	}
 
-	public Integer getFavPageForN1() {
+	private Integer getFavPageForN1() {
 		return favPageForN1;
 	}
 
-	public void setFavPageForN1(Integer favPageForN1Int) {
+	private void setFavPageForN1(Integer favPageForN1Int) {
 		if (favPageForN1Int >= 0 && favPageForN1Int <= favN1Count) {
 			favPageForN1 = favPageForN1Int;
 		}
 	}
 
-	public Integer getFavPageForN2() {
+	private Integer getFavPageForN2() {
 		return favPageForN2;
 	}
 
-	public void setFavPageForN2(Integer favPageForN2Int) {
+	private void setFavPageForN2(Integer favPageForN2Int) {
 		if (favPageForN2Int >= 0 && favPageForN2Int <= favN2Count) {
 			favPageForN2 = favPageForN2Int;
 		}
 	}
 
-	public Integer getFavN1Count() {
+	private Integer getFavN1Count() {
 		return favN1Count;
 	}
 
-	public void setFavN1Count(Integer favN1CountInt) {
+	private void setFavN1Count(Integer favN1CountInt) {
 		favN1Count = favN1CountInt;
 	}
 
-	public Integer getFavN2Count() {
+	private Integer getFavN2Count() {
 		return favN2Count;
 	}
 
-	public void setFavN2Count(Integer favN2CountInt) {
+	private void setFavN2Count(Integer favN2CountInt) {
 		favN2Count = favN2CountInt;
 	}
 
@@ -224,6 +228,59 @@ public class StatusClass {
 		} else if (getLevel().equals("2")) {
 			setFavN2Count(index);
 		}
+	}
+
+	public void nextFavWord() {
+		if (getLevel().equals("1")) {
+			setGramFavSeqForN1(getGramFavSeqForN1() + 1);
+		} else if (getLevel().equals("2")) {
+			setGramFavSeqForN2(getGramFavSeqForN2() + 1);
+		}
+	}
+
+	public void previousFavWord() {
+		if (getLevel().equals("1")) {
+			setGramFavSeqForN1(getGramFavSeqForN1() - 1);
+		} else if (getLevel().equals("2")) {
+			setGramFavSeqForN2(getGramFavSeqForN2() - 1);
+		}
+	}
+
+	public void setGramFavSeq(Integer index) {
+		if (getLevel().equals("1")) {
+			setGramFavSeqForN1(index + getFavPageForN1());
+		} else if (getLevel().equals("2")) {
+			setGramFavSeqForN2(index + getFavPageForN2());
+		}
+	}
+
+	private Integer getGramFavSeqForN1() {
+		return gramFavSeqForN1;
+	}
+
+	private void setGramFavSeqForN1(Integer gramFavSeqForN1Str) {
+		if (gramFavSeqForN1Str >= 1 && gramFavSeqForN1Str <= favN1Count) {
+			gramFavSeqForN1 = gramFavSeqForN1Str;
+		}
+	}
+
+	private Integer getGramFavSeqForN2() {
+		return gramFavSeqForN2;
+	}
+
+	private void setGramFavSeqForN2(Integer gramFavSeqForN2Str) {
+		if (gramFavSeqForN2Str >= 1 && gramFavSeqForN2Str <= favN2Count) {
+			gramFavSeqForN2 = gramFavSeqForN2Str;
+		}
+	}
+
+	public Integer getGramFavSeq() {
+		if (getLevel().equals("1")) {
+			return getGramFavSeqForN1();
+		} else if (getLevel().equals("2")) {
+			return getGramFavSeqForN2();
+		}
+		return null;
 	}
 
 }

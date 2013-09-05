@@ -11,7 +11,7 @@ import com.sanyu.jpgrammar.R;
 import com.sanyu.jpgrammar.domain.GrammarTitle;
 import com.sanyu.jpgrammar.service.GrammarService;
 import com.sanyu.jpgrammar.service.impl.GrammarServiceImpl;
-import com.sanyu.jpgrammar.ui.GrmDetailActivity;
+import com.sanyu.jpgrammar.ui.FavorDetailActivity;
 import com.sanyu.jpgrammar.util.SqlConstants;
 import com.sanyu.jpgrammar.util.StatusClass;
 
@@ -60,7 +60,7 @@ public class FavorListFragment extends BaseFragment implements OnItemClickListen
 			setTitle(view, "N2ÎÄ·¨");
 		}
 		refresh = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_fav_list);
-		refresh.setMode(Mode.BOTH);
+		refresh.setMode(Mode.DISABLED);
 		listView = refresh.getRefreshableView();
 		grammarService = new GrammarServiceImpl();
 		db = getActivity().openOrCreateDatabase(SqlConstants.DATABASE_NAME, Context.MODE_PRIVATE, null);
@@ -106,7 +106,7 @@ public class FavorListFragment extends BaseFragment implements OnItemClickListen
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		if (favList.size() > 0) {
-			Intent i = new Intent(getActivity(), GrmDetailActivity.class);
+			Intent i = new Intent(getActivity(), FavorDetailActivity.class);
 			StatusClass.getInstance().setGramSeq(Integer.parseInt(favList.get(position - 1).getGramSeq()));
 			startActivity(i);
 		}
