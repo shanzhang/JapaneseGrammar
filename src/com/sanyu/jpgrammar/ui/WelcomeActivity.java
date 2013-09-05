@@ -29,7 +29,7 @@ public class WelcomeActivity extends BaseActivity implements AnimationListener {
 		setContentView(R.layout.activity_welcome);
 		mAlphaAnimation = new AlphaAnimation(1.0f, 1.0f);
 		mAlphaAnimation.setAnimationListener(this);
-		mAlphaAnimation.setDuration(2500);
+		mAlphaAnimation.setDuration(500);
 		findViewById(R.id.welcome).setAnimation(mAlphaAnimation);
 	}
 
